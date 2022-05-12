@@ -1,0 +1,91 @@
+.header {
+  @include flex-center();
+  min-height: 100px;
+  background-color: $col-dr-blu;
+  box-shadow: $box-sh;
+  &__container {
+    @include flex-center-between();
+  }
+  &__logo {
+    margin-right: 30px;
+  }
+  &__nav {
+    display: block;
+    position: relative;
+    &-open {
+      @include dropdown-open();
+    }
+    &-close {
+      @include dropdown-close();
+    }
+    &-list {
+      @include throw-li();
+    }
+    &-item {
+      &:not(:last-child) {
+        margin-right: 25px;
+      }
+    }
+    &-btn {
+      padding: 14px 24px;
+      color: $col-dr-blu;
+      background-color: $col-wi;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $col-wi;
+      }
+      &:disabled {
+        cursor: default;
+        border-color: $col-blu;
+        background-color: $col-blu;
+        color: $col-dr-blu;
+      }
+      &-open,
+      &-close {
+        @include throw-btn();
+        display: none;
+        & svg {
+          width: 35px;
+          height: 35px;
+        }
+        & svg > rect {
+          transition: fill 0.4s ease-in-out;
+        }
+        &:hover svg > rect,
+        &:focus svg > rect {
+          fill: $col-blu;
+        }
+      }
+      &-close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+      }
+    }
+  }
+  @media (max-width: 859px) {
+    &__nav {
+      @include position-abs();
+      position: fixed;
+      display: none;
+      height: auto;
+      min-height: 120px;
+      z-index: 15;
+      padding: 30px 75px 10px 30px;
+      background-color: #116accd6;
+      &-list {
+        @include flex-wrap();
+      }
+      &-item {
+        margin-bottom: 18px;
+      }
+      &-btn {
+        &-open,
+        &-close {
+          display: block;
+        }
+      }
+    }
+  }
+}

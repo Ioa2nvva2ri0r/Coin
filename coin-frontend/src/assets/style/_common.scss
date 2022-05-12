@@ -1,0 +1,247 @@
+@font-face {
+  font-family: "Work Sans";
+  src: url("../fonts/Worksans-light.woff2") format("woff2"), url("../fonts/Worksans-light.woff") format("woff");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("../fonts/Worksans-regular.woff2") format("woff2"), url("../fonts/Worksans-regular.woff") format("woff");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("../fonts/Worksans-medium.woff2") format("woff2"), url("../fonts/Worksans-medium.woff") format("woff");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("../fonts/Worksans-semibold.woff2") format("woff2"), url("../fonts/Worksans-semibold.woff") format("woff");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("../fonts/Worksans-bold.woff2") format("woff2"), url("../fonts/Worksans-bold.woff") format("woff");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../fonts/Ubuntu-regular.woff2") format("woff2"), url("../fonts/Ubuntu-regular.woff") format("woff");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../fonts/Ubuntu-medium.woff2") format("woff2"), url("../fonts/Ubuntu-medium.woff") format("woff");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-medium.woff2") format("woff2"), url("../fonts/Roboto-medium.woff") format("woff");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 450px;
+  min-height: 924px;
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: $col-wi;
+  color: $col-bl;
+}
+
+button:focus,
+input:focus,
+a:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"]::-ms-clear,
+input[type="text"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 50px;
+  @media (max-width: 859px) {
+    padding: 0 25px;
+  }
+  @media (max-width: 653px) {
+    padding: 0 15px;
+  }
+}
+
+.title-main {
+  @include throw();
+  min-height: 40px;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.input-us {
+  cursor: pointer;
+  width: 300px;
+  height: 44px;
+  border: 1px solid #9ca3af;
+  border-radius: 7px;
+  padding: 10px 16px;
+  font-family: "Ubuntu";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: $col-bl;
+  background-color: $col-wi;
+  transition: border-color 0.4s ease-in-out, color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  &::placeholder {
+    font-family: "Ubuntu";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #6b7280;
+    transition: color 0.4s ease-in-out;
+  }
+  &:hover::placeholder,
+  &:focus::placeholder {
+    color: $col-wi;
+    transition: color 0.4s ease-in-out;
+  }
+  &:hover,
+  &:focus {
+    border-color: #5897db;
+    color: $col-wi;
+    background-color: #5897db;
+    transition: border-color 0.4s ease-in-out, color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+}
+
+.label-us {
+  max-width: 50px;
+  margin-right: 16px;
+  font-family: "Ubuntu";
+  letter-spacing: -0.01em;
+  color: #182233;
+}
+
+.dropdown-us {
+  @include position-abs();
+  display: none;
+  flex-direction: column;
+  top: 44px;
+  z-index: -1;
+  height: auto;
+  border-radius: 7px;
+  padding: 10px 0;
+  background-color: $col-wi;
+  box-shadow: $box-sh;
+  &__open {
+    @include dropdown-open();
+  }
+  &__close {
+    @include dropdown-close();
+  }
+}
+
+.option-us {
+  @include flex-center-between();
+  cursor: pointer;
+  padding: 10px 20px 10px 16px;
+  font-family: "Ubuntu";
+  line-height: 24px;
+  color: #374151;
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  &:focus {
+    outline: none;
+  }
+  &:hover,
+  &:focus {
+    color: $col-dr-blu;
+    background-color: #9fc3eb;
+    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+  &:active {
+    color: $col-dr-blu;
+    background-color: #cfe1f5;
+    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+  & svg > path {
+    transition: fill 0.4s ease-in-out;
+  }
+  &:hover svg path,
+  &:focus svg path,
+  &:active svg path {
+    fill: $col-dr-blu;
+  }
+}
+
+.btn-us {
+  @include text-nowrap();
+  cursor: pointer;
+  text-align: center;
+  min-width: 100px;
+  max-width: 210px;
+  border: 2px solid $col-dr-blu;
+  border-radius: 7px;
+  padding: 16px 21px;
+  font-family: "Ubuntu";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: $col-wi;
+  background-color: $col-dr-blu;
+  transition: border-color 0.4s ease-in-out, color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  &:hover,
+  &:focus {
+    border-color: #5897db;
+    background-color: #5897db;
+    transition: border-color 0.4s ease-in-out, color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+  &:active {
+    border-color: #0b4a8e;
+    background-color: #0b4a8e;
+    transition: border-color 0.4s ease-in-out, color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+}

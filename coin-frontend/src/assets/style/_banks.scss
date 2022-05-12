@@ -1,0 +1,44 @@
+.banks {
+  padding: 50px 0;
+  &__title {
+    margin-bottom: 56px;
+  }
+  &__map {
+    width: 1340px;
+    height: 728px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1440px) {
+    padding: 35px 0;
+    &__map {
+      width: 1100px;
+      height: 728px;
+    }
+  }
+  @media (max-width: 1261px) {
+    &__map {
+      width: 900px;
+      height: 950px;
+    }
+  }
+  @media (max-width: 1000px) {
+    &__map {
+      width: 700px;
+      height: 1050px;
+    }
+  }
+  @media (max-width: 859px) {
+    &__map {
+      width: 550px;
+    }
+  }
+  @media (max-width: 653px) {
+    position: relative;
+    padding: 15px 0;
+    &__map {
+      @include position-abs();
+      top: 100px;
+      height: 1000px;
+    }
+  }
+}

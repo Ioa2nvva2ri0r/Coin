@@ -1,0 +1,692 @@
+.viewAccount {
+  @include flex-column();
+  min-height: 824px;
+  padding: 50px 0;
+  &__header {
+    @include flex-center-between();
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    &-title {
+      margin-bottom: 30px;
+      &-box {
+        width: 100%;
+        max-width: 1000px;
+        margin-right: 30px;
+      }
+      &-account,
+      &-balance {
+        @include throw();
+      }
+      &-account {
+        @include flex-center();
+        @include text-nowrap();
+        font-weight: 400;
+        font-size: 34px;
+        line-height: 40px;
+      }
+      &-balance {
+        @include flex-center-between();
+        flex-wrap: wrap;
+        width: 100%;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        & span {
+          font-weight: 400;
+          padding-left: 50px;
+        }
+      }
+    }
+    &-btn {
+      @include flex-center();
+      margin-bottom: 33px;
+      & svg {
+        margin-right: 14px;
+      }
+      &-box {
+        @include flex-column();
+        align-items: flex-end;
+      }
+    }
+  }
+  &__list {
+    @include throw-li();
+    display: grid;
+    grid-template-columns: 45.25% 51%;
+    gap: 3.5%;
+  }
+  &__item {
+    &-balance,
+    &-ratio {
+      grid-column: 1/3;
+    }
+    &:last-child {
+      grid-column: 1/3;
+    }
+  }
+  &__card {
+    @include flex-center();
+    flex-direction: column;
+    height: 100%;
+    min-height: 228px;
+    border-radius: 50px;
+    padding: 25px 50px 25px 50px;
+    background-color: #f3f4f6;
+    &-form {
+      position: relative;
+      padding: 25px 50px 12.5px 50px;
+    }
+    &-balance,
+    &-ratio {
+      align-items: flex-start;
+      padding: 25px 25px 20px 50px;
+      box-shadow: $box-sh;
+      background-color: $col-wi;
+    }
+    &-balance {
+      &-more {
+        padding-left: 98px;
+      }
+    }
+    &-ratio {
+      padding-left: 98px;
+    }
+    &-transaction {
+      min-height: 130px;
+    }
+    &-title {
+      @include throw();
+      text-align: left;
+      width: 100%;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+    }
+  }
+  &__form {
+    @include flex-center();
+    flex-direction: column;
+    padding-bottom: 12.5px;
+    &-input {
+      padding-right: 35px;
+      & ~ .input-arrow > path {
+        transition: fill 0.4s ease-in-out;
+      }
+      &:hover ~ .input-arrow path,
+      &:focus ~ .input-arrow path,
+      &:active ~ .input-arrow path {
+        fill: $col-wi;
+      }
+      &-box {
+        @include flex-center();
+        justify-content: flex-end;
+        width: 100%;
+        margin-bottom: 25px;
+      }
+      &-label {
+        max-width: 188px;
+      }
+    }
+    &-select {
+      &-active {
+        & > .input-arrow {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+      &-container {
+        position: relative;
+        z-index: 10;
+        & svg {
+          position: absolute;
+          right: 23px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      &-dropdown {
+        height: 100px;
+        &[hidden] {
+          display: none !important;
+        }
+      }
+    }
+    &-btn {
+      @include flex-center();
+      & svg {
+        margin-right: 12px;
+      }
+    }
+  }
+  &__canvas {
+    width: 100%;
+    height: 165px;
+    margin-bottom: 8px;
+    border: 1px solid $col-bl;
+    padding: 0 7px;
+    &-container {
+      display: flex;
+      width: 100%;
+    }
+    &-box {
+      @include flex-column();
+      width: 100%;
+      max-width: 510px;
+      margin-right: 12px;
+      &-balance,
+      &-ratio {
+        max-width: 1000px;
+        margin-right: 46px;
+      }
+    }
+    &-date {
+      @include throw();
+      text-align: center;
+      font-weight: 500;
+      font-size: 12px;
+      &::first-line {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 18px;
+      }
+      &-list {
+        @include throw-li();
+        display: flex;
+        padding: 0 33px;
+      }
+      &-item {
+        &:not(:last-child) {
+          margin-right: 33.5px;
+        }
+      }
+    }
+    &-amount {
+      @include throw();
+      @include text-nowrap();
+      max-width: 95px;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
+      &-box {
+        @include flex-between();
+        flex-direction: column;
+        max-height: 165px;
+      }
+    }
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    &-active {
+      margin-bottom: 40px;
+    }
+    &-title {
+      @include throw();
+      font-family: "Ubuntu";
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: $col-wi;
+      &-box {
+        height: 64px;
+        background-color: $col-dr-blu;
+        & th {
+          @include text-nowrap();
+        }
+        & th:nth-child(3),
+        & th:nth-child(4) {
+          min-width: 200px;
+        }
+        & th:nth-child(1) {
+          border-radius: 15px 0 0 15px;
+          padding: 0 50px;
+        }
+        & th:nth-child(2),
+        & th:nth-child(3) {
+          padding-right: 50px;
+        }
+        & th:nth-child(4) {
+          border-radius: 0 15px 15px 0;
+        }
+      }
+    }
+    &-content {
+      @include flex-center();
+      font-family: "Ubuntu";
+      font-weight: 400;
+      line-height: 24px;
+      color: #374151;
+      &-amount {
+        &-green {
+          color: $col-green;
+        }
+        &-red {
+          color: $col-red;
+        }
+      }
+      &-box {
+        height: 71px;
+        padding-top: 21px;
+        padding-bottom: 26px;
+        border-bottom: 2px solid #0052ff1a;
+        & td:nth-child(1) {
+          padding: 0 50px;
+        }
+        & td:nth-child(2),
+        & td:nth-child(3) {
+          padding-right: 50px;
+        }
+        & td:nth-child(4) {
+          padding-right: 200px;
+        }
+        &-hidden {
+          display: none;
+        }
+      }
+    }
+  }
+  @media (max-width: 1440px) {
+    &__header-title-box {
+      max-width: 800px;
+    }
+    &__list {
+      grid-template-columns: 61% 35%;
+    }
+    &__item {
+      &-dynamic {
+        grid-column: 1/2;
+      }
+    }
+    &__card {
+      &-ratio,
+      &-balance-more {
+        padding-left: 65px;
+        & .viewAccount__canvas-date-item:not(:last-child) {
+          margin-right: 23.5px;
+        }
+      }
+    }
+    &__canvas {
+      &-box {
+        &-balance,
+        &-ratio {
+          max-width: 880px;
+        }
+      }
+    }
+    &__table {
+      &-title {
+        &-box {
+          & th:nth-child(1) {
+            padding: 0 25px;
+          }
+        }
+      }
+      &-content {
+        &-box {
+          & td:nth-child(1) {
+            padding: 0 25px;
+          }
+          & td:nth-child(4) {
+            padding-right: 150px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 1261px) {
+    &__header {
+      &-title {
+        &-account {
+          font-size: 30px;
+        }
+        &-box {
+          max-width: 600px;
+        }
+      }
+      &-btn {
+        margin-bottom: 19px;
+      }
+    }
+    &__list {
+      grid-template-columns: 76% 20%;
+    }
+    &__card {
+      &-title {
+        text-align: center;
+      }
+      &-transaction {
+        padding: 30px 25px 25px 30px;
+      }
+      &-ratio,
+      &-balance-more {
+        & .viewAccount__canvas-date-list {
+          padding: 0 15px;
+        }
+        & .viewAccount__canvas-date-item:not(:last-child) {
+          margin-right: 7.5px;
+        }
+        & .viewAccount__canvas-container {
+          justify-content: center;
+        }
+      }
+    }
+    &__canvas {
+      &-box {
+        &-balance,
+        &-ratio {
+          max-width: 670px;
+          margin-right: 25px;
+        }
+      }
+    }
+    &__table {
+      &-title {
+        &-box {
+          & th:nth-child(2),
+          & th:nth-child(3) {
+            padding-right: 35px;
+          }
+          & th:nth-child(3),
+          & th:nth-child(4) {
+            min-width: 120px;
+          }
+        }
+      }
+      &-content {
+        &-box {
+          & td:nth-child(2),
+          & td:nth-child(3) {
+            padding-right: 35px;
+          }
+          & td:nth-child(4) {
+            padding-right: 40px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 1000px) {
+    &__header-title {
+      &-box {
+        max-width: 496px;
+        margin-right: 15px;
+      }
+    }
+    &__list {
+      grid-template-columns: 91% 5%;
+    }
+    &__card {
+      &-ratio,
+      &-balance-more {
+        & .viewAccount__canvas-date-list {
+          padding: 0 19px;
+        }
+        & .viewAccount__canvas-date-item:not(:last-child) {
+          margin-right: 16.5px;
+        }
+        & .viewAccount__canvas-date {
+          font-size: 10px;
+          &::first-line {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    &__canvas {
+      &-box {
+        &-balance,
+        &-ratio {
+          max-width: 559px;
+        }
+      }
+    }
+    &__table {
+      &-title {
+        font-size: 17px;
+      }
+      &-content {
+        font-size: 12px;
+        &-box {
+          height: 50px;
+          padding: 12px 0;
+          & td:nth-child(2),
+          & td:nth-child(3) {
+            padding-right: 25px;
+          }
+          & td:nth-child(4) {
+            padding-right: 30px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 859px) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      &-title {
+        &-box {
+          margin-bottom: 20px;
+        }
+      }
+      &-btn {
+        &-box {
+          align-items: flex-start;
+        }
+      }
+    }
+    &__list {
+      grid-template-columns: 100%;
+      gap: 3.5% 0;
+    }
+    &__item {
+      &-dynamic {
+        grid-column: 1/2;
+      }
+    }
+    &__card {
+      &-form {
+        padding: 25px 25px 12.5px 25px;
+      }
+      &-balance {
+        padding: 25px 25px 20px 25px;
+      }
+      &-ratio,
+      &-balance-more {
+        padding: 25px 15px 20px 15px;
+        & .viewAccount__canvas-date-list {
+          padding: 0 15px;
+        }
+        & .viewAccount__canvas-date-item:not(:last-child) {
+          margin-right: 11.5px;
+        }
+        & .viewAccount__canvas-amount {
+          font-size: 15px;
+        }
+      }
+    }
+    &__canvas {
+      &-container {
+        justify-content: center;
+      }
+      &-box {
+        max-width: 400px;
+        &-balance,
+        &-ratio {
+          max-width: 491px;
+          margin-right: 12px;
+        }
+      }
+      &-date {
+        &-item {
+          &:not(:last-child) {
+            margin-right: 15.5px;
+          }
+        }
+        &-list {
+          padding: 0px 23px;
+        }
+      }
+    }
+    &__table {
+      &-title {
+        font-size: 15px;
+        &-box {
+          height: 40px;
+          & th:nth-child(1) {
+            padding: 0 10px;
+          }
+          & th:nth-child(2),
+          & th:nth-child(3) {
+            padding-right: 25px;
+          }
+          & th:nth-child(3),
+          & th:nth-child(4) {
+            min-width: 80px;
+          }
+        }
+      }
+      &-content {
+        font-size: 9px;
+        & svg {
+          width: 40px;
+          height: 15px;
+          padding-left: 5px;
+        }
+        &-box {
+          & td:nth-child(1) {
+            padding: 0 10px;
+          }
+          & td:nth-child(2),
+          & td:nth-child(3) {
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 653px) {
+    &__header {
+      &-title {
+        margin-bottom: 5px;
+        &-box {
+          margin-right: 0;
+        }
+        &-account {
+          font-size: 20px;
+        }
+      }
+    }
+    &__card {
+      &-title {
+        margin-bottom: 20px;
+        font-size: 17px;
+      }
+      &-form {
+        padding: 25px 40px 12.5px 40px;
+      }
+      &-transaction {
+        padding: 10px;
+      }
+      &-ratio,
+      &-balance-more {
+        & .viewAccount__canvas-date-list {
+          padding: 0 9px;
+        }
+        & .viewAccount__canvas-date-item:not(:last-child) {
+          margin-right: 0.9px;
+        }
+        & .viewAccount__canvas-date {
+          font-size: 7px;
+          line-height: 5px;
+          &::first-line {
+            font-size: 9.5px;
+          }
+        }
+      }
+    }
+    &__form {
+      &-input {
+        &-box {
+          flex-direction: column;
+          justify-content: flex-start;
+          margin-bottom: 20px;
+        }
+        &-label {
+          margin-bottom: 15px;
+          font-size: 15px;
+        }
+      }
+    }
+    &__canvas {
+      &-box {
+        max-width: 295px;
+      }
+      &-date {
+        font-size: 10px;
+        &::first-line {
+          font-size: 12px;
+        }
+        &-list {
+          padding: 0px 21px;
+        }
+        &-item {
+          &:not(:last-child) {
+            margin-right: 16.5px;
+          }
+        }
+      }
+      &-amount {
+        font-size: 14px;
+      }
+    }
+    &__table {
+      &-active {
+        margin-bottom: 20px;
+      }
+      &-title {
+        font-size: 11px;
+        &-box {
+          height: 35px;
+          & th:nth-child(1) {
+            padding: 0 8px;
+          }
+          & th:nth-child(2),
+          & th:nth-child(3) {
+            padding-right: 15px;
+          }
+          & th:nth-child(3),
+          & th:nth-child(4) {
+            min-width: 50px;
+          }
+        }
+      }
+      &-content {
+        font-size: 7px;
+        & svg {
+          width: 30px;
+          padding-left: 4px;
+        }
+        &-box {
+          height: 35px;
+          padding: 8px 0;
+          & td:nth-child(1) {
+            padding: 0 8px;
+          }
+          & td:nth-child(2),
+          & td:nth-child(3) {
+            padding-right: 10px;
+          }
+          & td:nth-child(4) {
+            padding-right: 10px;
+          }
+        }
+      }
+      &-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@import "_variables";
+@import "_mixin";
+@import "_common";
+@import "_header";
+@import "_account-login";
+@import "_banks";
+@import "_your-accounts";
+@import "_view-account";
+@import "_currencies";
+
+.error {
+  text-align: center;
+  overflow: hidden;
+  max-height: 0;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: $col-red;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  &__active {
+    max-height: 1000px;
+    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+  }
+  &__input {
+    border-color: $col-red;
+  }
+}
+
+.preloader {
+  width: 80px;
+  height: 80px;
+  border: solid 13px $col-dr-blu;
+  border-top-color: #b3cee2;
+  border-left-color: #b3cee2;
+  border-right-color: #b3cee2;
+  border-radius: 50%;
+  animation: loading 0.4s linear infinite;
+  @keyframes loading {
+    from {
+      transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  &__container {
+    @include block-100();
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    background: linear-gradient($col-dr-blu, $col-wi);
+  }
+  &__logo-box {
+    @include flex-center();
+    & svg {
+      height: 50px;
+      width: 155px;
+      margin-right: 30px;
+      @media (max-width: 653px) {
+        width: 115px;
+        margin-right: 15px;
+      }
+    }
+  }
+  @media (max-width: 653px) {
+    width: 50px;
+    height: 50px;
+    border-width: 10px;
+  }
+}
+
+.card-logo {
+  width: 50px;
+  height: 22px;
+  padding-left: 15px;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 15px;
+}
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.8;
+}
+.simplebar-scrollbar:before {
+  right: 5px;
+  background-color: $col-dr-blu;
+}

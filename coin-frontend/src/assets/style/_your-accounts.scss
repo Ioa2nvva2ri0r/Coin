@@ -1,0 +1,158 @@
+.accounts {
+  @include flex-column();
+  padding: 50px 0;
+  &__header {
+    @include flex-center-between();
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    &-box {
+      @include flex-center();
+      padding-right: 30px;
+    }
+    &-title {
+      width: 100%;
+      max-width: 750px;
+      margin-right: 35px;
+    }
+    &-select {
+      @include flex-center-between();
+      @include block-100();
+      cursor: pointer;
+      border: 1px solid $col-dr-blu;
+      border-radius: 7px;
+      padding: 10px 19.5px 10px 16px;
+      font-family: "Ubuntu";
+      font-weight: 400;
+      line-height: 24px;
+      background-color: $col-wi;
+      color: #374151;
+      transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      &:focus {
+        outline: none;
+      }
+      &:hover,
+      &:focus {
+        color: $col-dr-blu;
+        background-color: #9fc3eb;
+        transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      }
+      &:active {
+        color: $col-dr-blu;
+        background-color: #cfe1f5;
+        transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      }
+      & svg > path {
+        transition: fill 0.4s ease-in-out;
+      }
+      &:hover svg path,
+      &:focus svg path,
+      &:active svg path {
+        fill: $col-dr-blu;
+      }
+      &-active {
+        & svg {
+          transform: rotate(180deg);
+        }
+      }
+      &-box {
+        position: relative;
+        width: 100%;
+        min-width: 300px;
+        height: 44px;
+        z-index: 10;
+      }
+    }
+    &-form-btn {
+      @include flex-center-between();
+      & svg {
+        margin-right: 14px;
+      }
+    }
+  }
+  &__list {
+    @include throw-li();
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 50px 5%;
+  }
+  &__card {
+    @include block-100();
+    @include flex-column();
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 9px;
+    padding: 22px;
+    box-shadow: $box-sh;
+    &-title {
+      @include throw();
+      @include flex-center();
+      @include text-nowrap();
+      max-width: 350px;
+      margin-bottom: 9px;
+      font-family: "Roboto";
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      color: #182233;
+      &-box {
+        padding-bottom: 9px;
+      }
+    }
+    &-balance {
+      @include throw();
+      font-family: "Ubuntu";
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #182233;
+    }
+    &-transaction {
+      @include throw();
+      width: 100%;
+      max-width: 200px;
+      padding-right: 20px;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      & span {
+        font-weight: 700;
+      }
+      &-box {
+        @include flex-between();
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  @media (max-width: 1261px) {
+    &__list {
+      grid-template-columns: 1fr 1fr;
+    }
+    &__card {
+      max-width: 500px;
+    }
+  }
+  @media (max-width: 859px) {
+    &__header {
+      justify-content: center;
+      &-box {
+        margin-bottom: 30px;
+      }
+    }
+    &__list {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 653px) {
+    &__header {
+      justify-content: space-between;
+      &-box {
+        flex-wrap: wrap;
+      }
+      &-title {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
