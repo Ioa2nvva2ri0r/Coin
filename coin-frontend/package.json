@@ -8,7 +8,8 @@
     "lint:fix": "eslint ./ --fix",
     "serve": "npm start --prefix ./../coin-backend",
     "build": "webpack --mode=production --env prod",
-    "start": "concurrently \"npm run serve\" \"webpack serve --mode=development\"",
+    "dev": "webpack serve --mode=development",
+    "start": "concurrently \"npm run serve\" \"npm run dev\"",
     "start:build": "concurrently \"npm run serve\" \"npm run build\"",
     "test": "jest ./__test__",
     "cypress": "concurrently \"npm run start\" \"npx cypress open\""
@@ -27,7 +28,6 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-formatter-gitlab": "^2.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-prettier": "^4.0.0",
