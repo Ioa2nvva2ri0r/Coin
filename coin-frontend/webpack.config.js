@@ -75,6 +75,7 @@ module.exports = (env) => ({
                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
                   <meta name="description" content="Coin - банковская система хранения и операций над криптовалютными средствами">
                   <title>Coin</title>
+                  <!-- favicon -->
                   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
                   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
                   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
@@ -82,9 +83,12 @@ module.exports = (env) => ({
                   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#116acc">
                   <meta name="msapplication-TileColor" content="#116acc">
                   <meta name="theme-color" content="#116acc">
+                  <!-- simplebar -->
                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
                   <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+                  <!-- normalize -->
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                  <!-- yandex-map -->
                   <script id="api-map"></script>
                   </head>
                   <body></body>
